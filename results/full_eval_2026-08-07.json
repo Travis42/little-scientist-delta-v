@@ -1,0 +1,1348 @@
+{
+  "timestamp": "2026-08-07T12:33:33.338949Z",
+  "strategy": "CPCWE (Constraint-Propagated Confidence-Weighted Ensemble)",
+  "strategy_hash": "2f351f34",
+  "n_proteins": 217,
+  "n_uniprot": 186,
+  "n_categories": 5,
+  "scores": {
+    "flat_mean_spearman": 0.569013,
+    "uniprot_mean_spearman": 0.569783,
+    "official_category_mean": 0.55106,
+    "combined_with_speed_bonus": 0.570845
+  },
+  "category_breakdown": {
+    "Activity": {
+      "mean_spearman": 0.5513,
+      "n_uniprot": 37
+    },
+    "Binding": {
+      "mean_spearman": 0.4703,
+      "n_uniprot": 10
+    },
+    "Expression": {
+      "mean_spearman": 0.5721,
+      "n_uniprot": 11
+    },
+    "OrganismalFitness": {
+      "mean_spearman": 0.5199,
+      "n_uniprot": 62
+    },
+    "Stability": {
+      "mean_spearman": 0.6417,
+      "n_uniprot": 66
+    }
+  },
+  "comparison": {
+    "venus_rem_flat": 0.5357,
+    "venus_rem_official": 0.5151,
+    "venus_rem_leaderboard": 0.518,
+    "our_advantage_flat_pct": 6.2,
+    "our_advantage_official_pct": 7.0,
+    "note": "VenusREM flat computed from our DB (0.5357). Official computed (0.5151) matches leaderboard (0.518). Previous version incorrectly compared our flat vs their official."
+  },
+  "per_protein_details": {
+    "A0A192B1T2_9HIV1_Haddox_2018": {
+      "spearman": 0.5946,
+      "n_mutations": 12577,
+      "msa_depth": 8520,
+      "assay_type": "OrganismalFitness"
+    },
+    "A0A1I9GEU1_NEIME_Kennouche_2019": {
+      "spearman": 0.0643,
+      "n_mutations": 922,
+      "msa_depth": 1610,
+      "assay_type": "Activity"
+    },
+    "A0A247D711_LISMN_Stadelmann_2021": {
+      "spearman": 0.5728,
+      "n_mutations": 1653,
+      "msa_depth": 57,
+      "assay_type": "Activity"
+    },
+    "A0A140D2T1_ZIKV_Sourisseau_2019": {
+      "spearman": 0.4654,
+      "n_mutations": 9576,
+      "msa_depth": 16501,
+      "assay_type": "OrganismalFitness"
+    },
+    "A0A2Z5U3Z0_9INFA_Doud_2016": {
+      "spearman": 0.6535,
+      "n_mutations": 10715,
+      "msa_depth": 5650,
+      "assay_type": "OrganismalFitness"
+    },
+    "A0A2Z5U3Z0_9INFA_Wu_2014": {
+      "spearman": 0.5377,
+      "n_mutations": 2350,
+      "msa_depth": 5650,
+      "assay_type": "OrganismalFitness"
+    },
+    "A4GRB6_PSEAI_Chen_2020": {
+      "spearman": 0.7783,
+      "n_mutations": 5004,
+      "msa_depth": 2660,
+      "assay_type": "OrganismalFitness"
+    },
+    "A4D664_9INFA_Soh_2019": {
+      "spearman": 0.4688,
+      "n_mutations": 14421,
+      "msa_depth": 7590,
+      "assay_type": "OrganismalFitness"
+    },
+    "A4_HUMAN_Seuma_2022": {
+      "spearman": 0.4815,
+      "n_mutations": 14811,
+      "msa_depth": 5272,
+      "assay_type": "Stability"
+    },
+    "ACE2_HUMAN_Chan_2020": {
+      "spearman": 0.2697,
+      "n_mutations": 2223,
+      "msa_depth": 8050,
+      "assay_type": "Binding"
+    },
+    "AACC1_PSEAI_Dandage_2018": {
+      "spearman": 0.5189,
+      "n_mutations": 1801,
+      "msa_depth": 1770,
+      "assay_type": "OrganismalFitness"
+    },
+    "AICDA_HUMAN_Gajula_2014_3cycles": {
+      "spearman": 0.4978,
+      "n_mutations": 209,
+      "msa_depth": 1980,
+      "assay_type": "Activity"
+    },
+    "AMFR_HUMAN_Tsuboyama_2023_4G3O": {
+      "spearman": 0.4454,
+      "n_mutations": 2972,
+      "msa_depth": 500,
+      "assay_type": "Stability"
+    },
+    "AMIE_PSEAE_Wrenbeck_2017": {
+      "spearman": 0.6511,
+      "n_mutations": 6227,
+      "msa_depth": 3460,
+      "assay_type": "Activity"
+    },
+    "ADRB2_HUMAN_Jones_2020": {
+      "spearman": 0.5664,
+      "n_mutations": 7800,
+      "msa_depth": 4130,
+      "assay_type": "Activity"
+    },
+    "ARGR_ECOLI_Tsuboyama_2023_1AOY": {
+      "spearman": 0.5892,
+      "n_mutations": 1287,
+      "msa_depth": 690,
+      "assay_type": "Stability"
+    },
+    "B2L11_HUMAN_Dutta_2010_binding-Mcl-1": {
+      "spearman": 0.6618,
+      "n_mutations": 170,
+      "msa_depth": 660,
+      "assay_type": "Binding"
+    },
+    "ANCSZ_Hobbs_2022": {
+      "spearman": 0.6103,
+      "n_mutations": 4670,
+      "msa_depth": 6270,
+      "assay_type": "Activity"
+    },
+    "BCHB_CHLTE_Tsuboyama_2023_2KRU": {
+      "spearman": 0.6618,
+      "n_mutations": 1572,
+      "msa_depth": 520,
+      "assay_type": "Stability"
+    },
+    "BBC1_YEAST_Tsuboyama_2023_1TG0": {
+      "spearman": 0.4999,
+      "n_mutations": 2069,
+      "msa_depth": 640,
+      "assay_type": "Stability"
+    },
+    "BLAT_ECOLX_Deng_2012": {
+      "spearman": 0.564,
+      "n_mutations": 4996,
+      "msa_depth": 2860,
+      "assay_type": "OrganismalFitness"
+    },
+    "BLAT_ECOLX_Firnberg_2014": {
+      "spearman": 0.8351,
+      "n_mutations": 4783,
+      "msa_depth": 2860,
+      "assay_type": "OrganismalFitness"
+    },
+    "BLAT_ECOLX_Jacquier_2013": {
+      "spearman": 0.76,
+      "n_mutations": 989,
+      "msa_depth": 2860,
+      "assay_type": "OrganismalFitness"
+    },
+    "BRCA1_HUMAN_Findlay_2018": {
+      "spearman": 0.5947,
+      "n_mutations": 1837,
+      "msa_depth": 1008,
+      "assay_type": "OrganismalFitness"
+    },
+    "BLAT_ECOLX_Stiffler_2015": {
+      "spearman": 0.8303,
+      "n_mutations": 4996,
+      "msa_depth": 2860,
+      "assay_type": "OrganismalFitness"
+    },
+    "BRCA2_HUMAN_Erwood_2022_HEK293T": {
+      "spearman": 0.4699,
+      "n_mutations": 265,
+      "msa_depth": 933,
+      "assay_type": "OrganismalFitness"
+    },
+    "CALM1_HUMAN_Weile_2017": {
+      "spearman": 0.2243,
+      "n_mutations": 1813,
+      "msa_depth": 1490,
+      "assay_type": "OrganismalFitness"
+    },
+    "C6KNH7_9INFA_Lee_2018": {
+      "spearman": 0.6173,
+      "n_mutations": 10754,
+      "msa_depth": 5660,
+      "assay_type": "OrganismalFitness"
+    },
+    "CAR11_HUMAN_Meitlis_2020_gof": {
+      "spearman": 0.3827,
+      "n_mutations": 2374,
+      "msa_depth": 1352,
+      "assay_type": "OrganismalFitness"
+    },
+    "CAR11_HUMAN_Meitlis_2020_lof": {
+      "spearman": 0.5503,
+      "n_mutations": 2395,
+      "msa_depth": 1352,
+      "assay_type": "OrganismalFitness"
+    },
+    "CAPSD_AAV2S_Sinai_2021": {
+      "spearman": 0.4053,
+      "n_mutations": 42328,
+      "msa_depth": 604,
+      "assay_type": "OrganismalFitness"
+    },
+    "CASP3_HUMAN_Roychowdhury_2020": {
+      "spearman": 0.6556,
+      "n_mutations": 1567,
+      "msa_depth": 2580,
+      "assay_type": "Activity"
+    },
+    "CASP7_HUMAN_Roychowdhury_2020": {
+      "spearman": 0.6637,
+      "n_mutations": 1680,
+      "msa_depth": 2810,
+      "assay_type": "Activity"
+    },
+    "CAS9_STRP1_Spencer_2017_positive": {
+      "spearman": 0.2054,
+      "n_mutations": 8117,
+      "msa_depth": 5349,
+      "assay_type": "Activity"
+    },
+    "CBPA2_HUMAN_Tsuboyama_2023_1O6X": {
+      "spearman": 0.8303,
+      "n_mutations": 2068,
+      "msa_depth": 720,
+      "assay_type": "Stability"
+    },
+    "CATR_CHLRE_Tsuboyama_2023_2AMI": {
+      "spearman": 0.7223,
+      "n_mutations": 1903,
+      "msa_depth": 720,
+      "assay_type": "Stability"
+    },
+    "CBS_HUMAN_Sun_2020": {
+      "spearman": 0.3766,
+      "n_mutations": 7217,
+      "msa_depth": 5510,
+      "assay_type": "OrganismalFitness"
+    },
+    "CBX4_HUMAN_Tsuboyama_2023_2K28": {
+      "spearman": 0.6464,
+      "n_mutations": 2282,
+      "msa_depth": 500,
+      "assay_type": "Stability"
+    },
+    "CCDB_ECOLI_Adkar_2012": {
+      "spearman": 0.5272,
+      "n_mutations": 1176,
+      "msa_depth": 1010,
+      "assay_type": "Activity"
+    },
+    "CCDB_ECOLI_Tripathi_2016": {
+      "spearman": 0.5641,
+      "n_mutations": 1663,
+      "msa_depth": 1010,
+      "assay_type": "OrganismalFitness"
+    },
+    "CD19_HUMAN_Klesmith_2019_FMC_singles": {
+      "spearman": 0.3244,
+      "n_mutations": 3761,
+      "msa_depth": 1183,
+      "assay_type": "Binding"
+    },
+    "CP2C9_HUMAN_Amorosi_2021_abundance": {
+      "spearman": 0.6939,
+      "n_mutations": 6370,
+      "msa_depth": 4900,
+      "assay_type": "Expression"
+    },
+    "CCR5_HUMAN_Gill_2023": {
+      "spearman": 0.3838,
+      "n_mutations": 6137,
+      "msa_depth": 3520,
+      "assay_type": "Binding"
+    },
+    "CSN4_MOUSE_Tsuboyama_2023_1UFM": {
+      "spearman": 0.7308,
+      "n_mutations": 3295,
+      "msa_depth": 720,
+      "assay_type": "Stability"
+    },
+    "CUE1_YEAST_Tsuboyama_2023_2MYX": {
+      "spearman": 0.6216,
+      "n_mutations": 1580,
+      "msa_depth": 520,
+      "assay_type": "Stability"
+    },
+    "CP2C9_HUMAN_Amorosi_2021_activity": {
+      "spearman": 0.7287,
+      "n_mutations": 6142,
+      "msa_depth": 4900,
+      "assay_type": "Binding"
+    },
+    "D7PM05_CLYGR_Somermeyer_2022": {
+      "spearman": 0.6395,
+      "n_mutations": 24515,
+      "msa_depth": 694,
+      "assay_type": "Activity"
+    },
+    "DLG4_RAT_McLaughlin_2012": {
+      "spearman": 0.6083,
+      "n_mutations": 1576,
+      "msa_depth": 7240,
+      "assay_type": "Binding"
+    },
+    "DN7A_SACS2_Tsuboyama_2023_1JIC": {
+      "spearman": 0.6361,
+      "n_mutations": 1008,
+      "msa_depth": 550,
+      "assay_type": "Stability"
+    },
+    "DLG4_HUMAN_Faure_2021": {
+      "spearman": 0.7123,
+      "n_mutations": 6976,
+      "msa_depth": 7240,
+      "assay_type": "OrganismalFitness"
+    },
+    "DNJA1_HUMAN_Tsuboyama_2023_2LO1": {
+      "spearman": 0.8274,
+      "n_mutations": 2264,
+      "msa_depth": 650,
+      "assay_type": "Stability"
+    },
+    "DYR_ECOLI_Nguyen_2023": {
+      "spearman": 0.545,
+      "n_mutations": 2916,
+      "msa_depth": 1590,
+      "assay_type": "OrganismalFitness"
+    },
+    "DOCK1_MOUSE_Tsuboyama_2023_2M0Y": {
+      "spearman": 0.5911,
+      "n_mutations": 2915,
+      "msa_depth": 660,
+      "assay_type": "Stability"
+    },
+    "DYR_ECOLI_Thompson_2019": {
+      "spearman": 0.5494,
+      "n_mutations": 2363,
+      "msa_depth": 1590,
+      "assay_type": "OrganismalFitness"
+    },
+    "ENV_HV1B9_DuenasDecamp_2016": {
+      "spearman": 0.391,
+      "n_mutations": 375,
+      "msa_depth": 8530,
+      "assay_type": "OrganismalFitness"
+    },
+    "ENVZ_ECOLI_Ghose_2023": {
+      "spearman": 0.2439,
+      "n_mutations": 1121,
+      "msa_depth": 600,
+      "assay_type": "Activity"
+    },
+    "EPHB2_HUMAN_Tsuboyama_2023_1F0M": {
+      "spearman": 0.8294,
+      "n_mutations": 1960,
+      "msa_depth": 660,
+      "assay_type": "Stability"
+    },
+    "ENV_HV1BR_Haddox_2016": {
+      "spearman": 0.3828,
+      "n_mutations": 12863,
+      "msa_depth": 8610,
+      "assay_type": "OrganismalFitness"
+    },
+    "ERBB2_HUMAN_Elazar_2016": {
+      "spearman": 0.521,
+      "n_mutations": 326,
+      "msa_depth": 8311,
+      "assay_type": "Expression"
+    },
+    "ESTA_BACSU_Nutschel_2020": {
+      "spearman": 0.4309,
+      "n_mutations": 2172,
+      "msa_depth": 2120,
+      "assay_type": "Stability"
+    },
+    "F7YBW8_MESOW_Aakre_2015": {
+      "spearman": 0.2901,
+      "n_mutations": 9192,
+      "msa_depth": 930,
+      "assay_type": "OrganismalFitness"
+    },
+    "FECA_ECOLI_Tsuboyama_2023_2D1U": {
+      "spearman": 0.6097,
+      "n_mutations": 1886,
+      "msa_depth": 720,
+      "assay_type": "Stability"
+    },
+    "F7YBW8_MESOW_Ding_2023": {
+      "spearman": 0.6311,
+      "n_mutations": 7922,
+      "msa_depth": 930,
+      "assay_type": "OrganismalFitness"
+    },
+    "FKBP3_HUMAN_Tsuboyama_2023_2KFV": {
+      "spearman": 0.6397,
+      "n_mutations": 1237,
+      "msa_depth": 690,
+      "assay_type": "Stability"
+    },
+    "GCN4_YEAST_Staller_2018": {
+      "spearman": 0.2681,
+      "n_mutations": 2638,
+      "msa_depth": 350,
+      "assay_type": "Binding"
+    },
+    "GDIA_HUMAN_Silverstein_2021": {
+      "spearman": 0.4874,
+      "n_mutations": 1154,
+      "msa_depth": 4470,
+      "assay_type": "OrganismalFitness"
+    },
+    "GAL4_YEAST_Kitzman_2015": {
+      "spearman": 0.6547,
+      "n_mutations": 1195,
+      "msa_depth": 8810,
+      "assay_type": "OrganismalFitness"
+    },
+    "GLPA_HUMAN_Elazar_2016": {
+      "spearman": 0.5507,
+      "n_mutations": 245,
+      "msa_depth": 273,
+      "assay_type": "Expression"
+    },
+    "GFP_AEQVI_Sarkisyan_2016": {
+      "spearman": 0.7418,
+      "n_mutations": 51714,
+      "msa_depth": 396,
+      "assay_type": "Activity"
+    },
+    "HCP_LAMBD_Tsuboyama_2023_2L6Q": {
+      "spearman": 0.7461,
+      "n_mutations": 1040,
+      "msa_depth": 550,
+      "assay_type": "Stability"
+    },
+    "HECD1_HUMAN_Tsuboyama_2023_3DKM": {
+      "spearman": 0.3369,
+      "n_mutations": 5586,
+      "msa_depth": 720,
+      "assay_type": "Stability"
+    },
+    "HEM3_HUMAN_Loggerenberg_2023": {
+      "spearman": 0.4675,
+      "n_mutations": 5689,
+      "msa_depth": 3610,
+      "assay_type": "Activity"
+    },
+    "GRB2_HUMAN_Faure_2021": {
+      "spearman": 0.6913,
+      "n_mutations": 63366,
+      "msa_depth": 2170,
+      "assay_type": "OrganismalFitness"
+    },
+    "HMDH_HUMAN_Jiang_2019": {
+      "spearman": 0.4904,
+      "n_mutations": 16853,
+      "msa_depth": 3153,
+      "assay_type": "OrganismalFitness"
+    },
+    "HSP82_YEAST_Cote-Hammarlof_2020_growth-H2O2": {
+      "spearman": 0.3541,
+      "n_mutations": 2252,
+      "msa_depth": 7090,
+      "assay_type": "OrganismalFitness"
+    },
+    "HSP82_YEAST_Flynn_2019": {
+      "spearman": 0.4225,
+      "n_mutations": 13294,
+      "msa_depth": 7090,
+      "assay_type": "OrganismalFitness"
+    },
+    "HSP82_YEAST_Mishra_2016": {
+      "spearman": 0.5252,
+      "n_mutations": 4323,
+      "msa_depth": 7090,
+      "assay_type": "OrganismalFitness"
+    },
+    "HXK4_HUMAN_Gersing_2022_activity": {
+      "spearman": 0.5438,
+      "n_mutations": 8570,
+      "msa_depth": 4650,
+      "assay_type": "OrganismalFitness"
+    },
+    "HXK4_HUMAN_Gersing_2023_abundance": {
+      "spearman": 0.4161,
+      "n_mutations": 8396,
+      "msa_depth": 4650,
+      "assay_type": "Expression"
+    },
+    "I6TAH8_I68A0_Doud_2015": {
+      "spearman": 0.4017,
+      "n_mutations": 9462,
+      "msa_depth": 4980,
+      "assay_type": "OrganismalFitness"
+    },
+    "IF1_ECOLI_Kelsic_2016": {
+      "spearman": 0.5655,
+      "n_mutations": 1367,
+      "msa_depth": 720,
+      "assay_type": "OrganismalFitness"
+    },
+    "ILF3_HUMAN_Tsuboyama_2023_2L33": {
+      "spearman": 0.5113,
+      "n_mutations": 1329,
+      "msa_depth": 710,
+      "assay_type": "Stability"
+    },
+    "ISDH_STAAW_Tsuboyama_2023_2LHR": {
+      "spearman": 0.5459,
+      "n_mutations": 1944,
+      "msa_depth": 550,
+      "assay_type": "Stability"
+    },
+    "KCNE1_HUMAN_Muhammad_2023_expression": {
+      "spearman": 0.1829,
+      "n_mutations": 2339,
+      "msa_depth": 1290,
+      "assay_type": "Expression"
+    },
+    "KCNE1_HUMAN_Muhammad_2023_function": {
+      "spearman": 0.5844,
+      "n_mutations": 2315,
+      "msa_depth": 1290,
+      "assay_type": "Activity"
+    },
+    "KCNH2_HUMAN_Kozek_2020": {
+      "spearman": 0.6377,
+      "n_mutations": 200,
+      "msa_depth": 11590,
+      "assay_type": "Activity"
+    },
+    "KCNJ2_MOUSE_Coyote-Maestas_2022_function": {
+      "spearman": 0.3823,
+      "n_mutations": 6963,
+      "msa_depth": 4280,
+      "assay_type": "Activity"
+    },
+    "KCNJ2_MOUSE_Coyote-Maestas_2022_surface": {
+      "spearman": 0.4051,
+      "n_mutations": 6917,
+      "msa_depth": 4280,
+      "assay_type": "Expression"
+    },
+    "KKA2_KLEPN_Melnikov_2014": {
+      "spearman": 0.6734,
+      "n_mutations": 4960,
+      "msa_depth": 2640,
+      "assay_type": "OrganismalFitness"
+    },
+    "LGK_LIPST_Klesmith_2015": {
+      "spearman": 0.5838,
+      "n_mutations": 7890,
+      "msa_depth": 4390,
+      "assay_type": "Activity"
+    },
+    "LYAM1_HUMAN_Elazar_2016": {
+      "spearman": 0.4743,
+      "n_mutations": 359,
+      "msa_depth": 3720,
+      "assay_type": "Expression"
+    },
+    "MAFG_MOUSE_Tsuboyama_2023_1K1V": {
+      "spearman": 0.7536,
+      "n_mutations": 1429,
+      "msa_depth": 500,
+      "assay_type": "Stability"
+    },
+    "MBD11_ARATH_Tsuboyama_2023_6ACV": {
+      "spearman": 0.8353,
+      "n_mutations": 2116,
+      "msa_depth": 660,
+      "assay_type": "Stability"
+    },
+    "MET_HUMAN_Estevam_2023": {
+      "spearman": 0.6161,
+      "n_mutations": 5393,
+      "msa_depth": 2870,
+      "assay_type": "Activity"
+    },
+    "MK01_HUMAN_Brenan_2016": {
+      "spearman": 0.226,
+      "n_mutations": 6809,
+      "msa_depth": 3600,
+      "assay_type": "OrganismalFitness"
+    },
+    "MLAC_ECOLI_MacRae_2023": {
+      "spearman": 0.432,
+      "n_mutations": 4007,
+      "msa_depth": 2110,
+      "assay_type": "OrganismalFitness"
+    },
+    "MSH2_HUMAN_Jia_2020": {
+      "spearman": 0.425,
+      "n_mutations": 16749,
+      "msa_depth": 9340,
+      "assay_type": "OrganismalFitness"
+    },
+    "MTH3_HAEAE_RockahShmuel_2015": {
+      "spearman": 0.6708,
+      "n_mutations": 1777,
+      "msa_depth": 3300,
+      "assay_type": "OrganismalFitness"
+    },
+    "MTHR_HUMAN_Weile_2021": {
+      "spearman": 0.3782,
+      "n_mutations": 12464,
+      "msa_depth": 4783,
+      "assay_type": "OrganismalFitness"
+    },
+    "MYO3_YEAST_Tsuboyama_2023_2BTT": {
+      "spearman": 0.5877,
+      "n_mutations": 3297,
+      "msa_depth": 610,
+      "assay_type": "Stability"
+    },
+    "NCAP_I34A1_Doud_2015": {
+      "spearman": 0.4319,
+      "n_mutations": 9462,
+      "msa_depth": 4980,
+      "assay_type": "OrganismalFitness"
+    },
+    "NKX31_HUMAN_Tsuboyama_2023_2L9R": {
+      "spearman": 0.6645,
+      "n_mutations": 2482,
+      "msa_depth": 610,
+      "assay_type": "Stability"
+    },
+    "NPC1_HUMAN_Erwood_2022_HEK293T": {
+      "spearman": 0.7735,
+      "n_mutations": 637,
+      "msa_depth": 6333,
+      "assay_type": "Activity"
+    },
+    "NPC1_HUMAN_Erwood_2022_RPE1": {
+      "spearman": 0.8082,
+      "n_mutations": 63,
+      "msa_depth": 6333,
+      "assay_type": "Activity"
+    },
+    "NRAM_I33A0_Jiang_2016": {
+      "spearman": 0.6969,
+      "n_mutations": 298,
+      "msa_depth": 4530,
+      "assay_type": "OrganismalFitness"
+    },
+    "NUD15_HUMAN_Suiter_2020": {
+      "spearman": 0.7156,
+      "n_mutations": 2844,
+      "msa_depth": 1640,
+      "assay_type": "Expression"
+    },
+    "NUSA_ECOLI_Tsuboyama_2023_1WCL": {
+      "spearman": 0.7715,
+      "n_mutations": 2028,
+      "msa_depth": 690,
+      "assay_type": "Stability"
+    },
+    "NUSG_MYCTU_Tsuboyama_2023_2MI6": {
+      "spearman": 0.6401,
+      "n_mutations": 1380,
+      "msa_depth": 550,
+      "assay_type": "Stability"
+    },
+    "OBSCN_HUMAN_Tsuboyama_2023_1V1C": {
+      "spearman": 0.8091,
+      "n_mutations": 3197,
+      "msa_depth": 650,
+      "assay_type": "Stability"
+    },
+    "ODP2_GEOSE_Tsuboyama_2023_1W4G": {
+      "spearman": 0.3081,
+      "n_mutations": 1134,
+      "msa_depth": 500,
+      "assay_type": "Stability"
+    },
+    "OPSD_HUMAN_Wan_2019": {
+      "spearman": 0.6861,
+      "n_mutations": 165,
+      "msa_depth": 3480,
+      "assay_type": "Expression"
+    },
+    "OTC_HUMAN_Lo_2023": {
+      "spearman": 0.6915,
+      "n_mutations": 1570,
+      "msa_depth": 3540,
+      "assay_type": "Activity"
+    },
+    "OTU7A_HUMAN_Tsuboyama_2023_2L2D": {
+      "spearman": 0.6325,
+      "n_mutations": 635,
+      "msa_depth": 500,
+      "assay_type": "Stability"
+    },
+    "HIS7_YEAST_Pokusaeva_2019": {
+      "spearman": 0.618,
+      "n_mutations": 496137,
+      "msa_depth": 2200,
+      "assay_type": "OrganismalFitness"
+    },
+    "OXDA_RHOTO_Vanella_2023_expression": {
+      "spearman": 0.4228,
+      "n_mutations": 6769,
+      "msa_depth": 3640,
+      "assay_type": "Expression"
+    },
+    "OXDA_RHOTO_Vanella_2023_activity": {
+      "spearman": 0.4286,
+      "n_mutations": 6396,
+      "msa_depth": 3640,
+      "assay_type": "Activity"
+    },
+    "P53_HUMAN_Giacomelli_2018_Null_Etoposide": {
+      "spearman": 0.5122,
+      "n_mutations": 7467,
+      "msa_depth": 3930,
+      "assay_type": "OrganismalFitness"
+    },
+    "P53_HUMAN_Giacomelli_2018_Null_Nutlin": {
+      "spearman": 0.4889,
+      "n_mutations": 7467,
+      "msa_depth": 3930,
+      "assay_type": "OrganismalFitness"
+    },
+    "P53_HUMAN_Kotler_2018": {
+      "spearman": 0.724,
+      "n_mutations": 1048,
+      "msa_depth": 3930,
+      "assay_type": "OrganismalFitness"
+    },
+    "P53_HUMAN_Giacomelli_2018_WT_Nutlin": {
+      "spearman": 0.5475,
+      "n_mutations": 7467,
+      "msa_depth": 3930,
+      "assay_type": "OrganismalFitness"
+    },
+    "P84126_THETH_Chan_2017": {
+      "spearman": 0.7034,
+      "n_mutations": 1519,
+      "msa_depth": 2540,
+      "assay_type": "OrganismalFitness"
+    },
+    "PAI1_HUMAN_Huttinger_2021": {
+      "spearman": 0.4902,
+      "n_mutations": 5345,
+      "msa_depth": 4020,
+      "assay_type": "Activity"
+    },
+    "PA_I34A1_Wu_2015": {
+      "spearman": 0.536,
+      "n_mutations": 1820,
+      "msa_depth": 7160,
+      "assay_type": "OrganismalFitness"
+    },
+    "PABP_YEAST_Melamed_2013": {
+      "spearman": 0.7568,
+      "n_mutations": 37708,
+      "msa_depth": 5770,
+      "assay_type": "OrganismalFitness"
+    },
+    "PIN1_HUMAN_Tsuboyama_2023_1I6C": {
+      "spearman": 0.7759,
+      "n_mutations": 802,
+      "msa_depth": 500,
+      "assay_type": "Stability"
+    },
+    "PITX2_HUMAN_Tsuboyama_2023_2L7M": {
+      "spearman": 0.5709,
+      "n_mutations": 1824,
+      "msa_depth": 520,
+      "assay_type": "Stability"
+    },
+    "PKN1_HUMAN_Tsuboyama_2023_1URF": {
+      "spearman": 0.5065,
+      "n_mutations": 1301,
+      "msa_depth": 710,
+      "assay_type": "Stability"
+    },
+    "POLG_CXB3N_Mattenberger_2021": {
+      "spearman": 0.4763,
+      "n_mutations": 15711,
+      "msa_depth": 7909,
+      "assay_type": "OrganismalFitness"
+    },
+    "POLG_DEN26_Suphatrakul_2023": {
+      "spearman": 0.6134,
+      "n_mutations": 16897,
+      "msa_depth": 9000,
+      "assay_type": "OrganismalFitness"
+    },
+    "POLG_HCVJF_Qi_2014": {
+      "spearman": 0.6919,
+      "n_mutations": 1630,
+      "msa_depth": 16556,
+      "assay_type": "OrganismalFitness"
+    },
+    "POLG_PESV_Tsuboyama_2023_2MXD": {
+      "spearman": 0.7496,
+      "n_mutations": 5130,
+      "msa_depth": 530,
+      "assay_type": "Stability"
+    },
+    "PPARG_HUMAN_Majithia_2016": {
+      "spearman": 0.7492,
+      "n_mutations": 9576,
+      "msa_depth": 5050,
+      "assay_type": "Activity"
+    },
+    "PPM1D_HUMAN_Miller_2022": {
+      "spearman": 0.6407,
+      "n_mutations": 7889,
+      "msa_depth": 1844,
+      "assay_type": "OrganismalFitness"
+    },
+    "PR40A_HUMAN_Tsuboyama_2023_1UZC": {
+      "spearman": 0.8595,
+      "n_mutations": 2033,
+      "msa_depth": 630,
+      "assay_type": "Stability"
+    },
+    "PRKN_HUMAN_Clausen_2023": {
+      "spearman": 0.7221,
+      "n_mutations": 8756,
+      "msa_depth": 1457,
+      "assay_type": "Expression"
+    },
+    "PSAE_PICP2_Tsuboyama_2023_1PSE": {
+      "spearman": 0.7009,
+      "n_mutations": 1579,
+      "msa_depth": 680,
+      "assay_type": "Stability"
+    },
+    "PHOT_CHLRE_Chen_2023": {
+      "spearman": 0.5678,
+      "n_mutations": 167529,
+      "msa_depth": 1180,
+      "assay_type": "Activity"
+    },
+    "PTEN_HUMAN_Matreyek_2021": {
+      "spearman": 0.5471,
+      "n_mutations": 5083,
+      "msa_depth": 4030,
+      "assay_type": "Expression"
+    },
+    "PTEN_HUMAN_Mighell_2018": {
+      "spearman": 0.572,
+      "n_mutations": 7260,
+      "msa_depth": 4030,
+      "assay_type": "Activity"
+    },
+    "Q53Z42_HUMAN_McShan_2019_binding-TAPBPR": {
+      "spearman": 0.4426,
+      "n_mutations": 3344,
+      "msa_depth": 3650,
+      "assay_type": "Binding"
+    },
+    "Q53Z42_HUMAN_McShan_2019_expression": {
+      "spearman": 0.6827,
+      "n_mutations": 3344,
+      "msa_depth": 3650,
+      "assay_type": "Expression"
+    },
+    "Q59976_STRSQ_Romero_2015": {
+      "spearman": 0.6726,
+      "n_mutations": 2999,
+      "msa_depth": 5010,
+      "assay_type": "Activity"
+    },
+    "Q2N0S5_9HIV1_Haddox_2018": {
+      "spearman": 0.6221,
+      "n_mutations": 12729,
+      "msa_depth": 8600,
+      "assay_type": "OrganismalFitness"
+    },
+    "Q6WV12_9MAXI_Somermeyer_2022": {
+      "spearman": 0.3806,
+      "n_mutations": 31401,
+      "msa_depth": 506,
+      "assay_type": "Activity"
+    },
+    "Q837P4_ENTFA_Meier_2023": {
+      "spearman": 0.6312,
+      "n_mutations": 697,
+      "msa_depth": 5890,
+      "assay_type": "Activity"
+    },
+    "Q837P5_ENTFA_Meier_2023": {
+      "spearman": 0.5361,
+      "n_mutations": 747,
+      "msa_depth": 5710,
+      "assay_type": "Activity"
+    },
+    "Q8WTC7_9CNID_Somermeyer_2022": {
+      "spearman": 0.3665,
+      "n_mutations": 33510,
+      "msa_depth": 655,
+      "assay_type": "Activity"
+    },
+    "RAD_ANTMA_Tsuboyama_2023_2CJJ": {
+      "spearman": 0.6182,
+      "n_mutations": 912,
+      "msa_depth": 540,
+      "assay_type": "Stability"
+    },
+    "R1AB_SARS2_Flynn_2022": {
+      "spearman": 0.6266,
+      "n_mutations": 5725,
+      "msa_depth": 3060,
+      "assay_type": "OrganismalFitness"
+    },
+    "RAF1_HUMAN_Zinkus-Boltz_2019": {
+      "spearman": 0.4914,
+      "n_mutations": 297,
+      "msa_depth": 6480,
+      "assay_type": "OrganismalFitness"
+    },
+    "RASH_HUMAN_Bandaru_2017": {
+      "spearman": 0.5768,
+      "n_mutations": 3134,
+      "msa_depth": 1890,
+      "assay_type": "Activity"
+    },
+    "RASK_HUMAN_Weng_2022_abundance": {
+      "spearman": 0.3687,
+      "n_mutations": 26012,
+      "msa_depth": 1880,
+      "assay_type": "Expression"
+    },
+    "RASK_HUMAN_Weng_2022_binding-DARPin_K55": {
+      "spearman": 0.7036,
+      "n_mutations": 24873,
+      "msa_depth": 1880,
+      "assay_type": "Binding"
+    },
+    "RBP1_HUMAN_Tsuboyama_2023_2KWH": {
+      "spearman": 0.5264,
+      "n_mutations": 1332,
+      "msa_depth": 520,
+      "assay_type": "Stability"
+    },
+    "RCD1_ARATH_Tsuboyama_2023_5OAO": {
+      "spearman": 0.5614,
+      "n_mutations": 1261,
+      "msa_depth": 570,
+      "assay_type": "Stability"
+    },
+    "RD23A_HUMAN_Tsuboyama_2023_1IFY": {
+      "spearman": 0.6164,
+      "n_mutations": 1019,
+      "msa_depth": 500,
+      "assay_type": "Stability"
+    },
+    "RCRO_LAMBD_Tsuboyama_2023_1ORC": {
+      "spearman": 0.7628,
+      "n_mutations": 2278,
+      "msa_depth": 630,
+      "assay_type": "Stability"
+    },
+    "REV_HV1H2_Fernandes_2016": {
+      "spearman": 0.3631,
+      "n_mutations": 2147,
+      "msa_depth": 1160,
+      "assay_type": "OrganismalFitness"
+    },
+    "RFAH_ECOLI_Tsuboyama_2023_2LCL": {
+      "spearman": 0.397,
+      "n_mutations": 1326,
+      "msa_depth": 550,
+      "assay_type": "Stability"
+    },
+    "RL20_AQUAE_Tsuboyama_2023_1GYZ": {
+      "spearman": 0.7771,
+      "n_mutations": 1461,
+      "msa_depth": 590,
+      "assay_type": "Stability"
+    },
+    "RDRP_I33A0_Li_2023": {
+      "spearman": 0.517,
+      "n_mutations": 12003,
+      "msa_depth": 7570,
+      "assay_type": "OrganismalFitness"
+    },
+    "RL40A_YEAST_Mavor_2016": {
+      "spearman": 0.637,
+      "n_mutations": 1253,
+      "msa_depth": 1280,
+      "assay_type": "OrganismalFitness"
+    },
+    "RL40A_YEAST_Roscoe_2013": {
+      "spearman": 0.7312,
+      "n_mutations": 1195,
+      "msa_depth": 1280,
+      "assay_type": "OrganismalFitness"
+    },
+    "RL40A_YEAST_Roscoe_2014": {
+      "spearman": 0.6652,
+      "n_mutations": 1380,
+      "msa_depth": 1280,
+      "assay_type": "Activity"
+    },
+    "RNC_ECOLI_Weeks_2023": {
+      "spearman": 0.6353,
+      "n_mutations": 4277,
+      "msa_depth": 2260,
+      "assay_type": "Activity"
+    },
+    "RPC1_LAMBD_Li_2019_high-expression": {
+      "spearman": 0.5365,
+      "n_mutations": 351,
+      "msa_depth": 2370,
+      "assay_type": "Activity"
+    },
+    "RPC1_LAMBD_Li_2019_low-expression": {
+      "spearman": 0.6096,
+      "n_mutations": 351,
+      "msa_depth": 2370,
+      "assay_type": "Activity"
+    },
+    "RS15_GEOSE_Tsuboyama_2023_1A32": {
+      "spearman": 0.5579,
+      "n_mutations": 1195,
+      "msa_depth": 630,
+      "assay_type": "Stability"
+    },
+    "RPC1_BP434_Tsuboyama_2023_1R69": {
+      "spearman": 0.763,
+      "n_mutations": 1459,
+      "msa_depth": 610,
+      "assay_type": "Stability"
+    },
+    "S22A1_HUMAN_Yee_2023_abundance": {
+      "spearman": 0.7033,
+      "n_mutations": 9803,
+      "msa_depth": 5530,
+      "assay_type": "Expression"
+    },
+    "S22A1_HUMAN_Yee_2023_activity": {
+      "spearman": 0.6487,
+      "n_mutations": 10094,
+      "msa_depth": 5530,
+      "assay_type": "Activity"
+    },
+    "SBI_STAAM_Tsuboyama_2023_2JVG": {
+      "spearman": 0.6796,
+      "n_mutations": 1025,
+      "msa_depth": 560,
+      "assay_type": "Stability"
+    },
+    "SAV1_MOUSE_Tsuboyama_2023_2YSB": {
+      "spearman": 0.5537,
+      "n_mutations": 965,
+      "msa_depth": 500,
+      "assay_type": "Stability"
+    },
+    "SCIN_STAAR_Tsuboyama_2023_2QFF": {
+      "spearman": 0.5142,
+      "n_mutations": 1212,
+      "msa_depth": 700,
+      "assay_type": "Stability"
+    },
+    "SCN5A_HUMAN_Glazer_2019": {
+      "spearman": 0.1765,
+      "n_mutations": 224,
+      "msa_depth": 20160,
+      "assay_type": "OrganismalFitness"
+    },
+    "SDA_BACSU_Tsuboyama_2023_1PV0": {
+      "spearman": 0.6863,
+      "n_mutations": 2770,
+      "msa_depth": 500,
+      "assay_type": "Stability"
+    },
+    "SC6A4_HUMAN_Young_2021": {
+      "spearman": 0.5864,
+      "n_mutations": 11576,
+      "msa_depth": 6300,
+      "assay_type": "Activity"
+    },
+    "SHOC2_HUMAN_Kwon_2022": {
+      "spearman": 0.4219,
+      "n_mutations": 10972,
+      "msa_depth": 5820,
+      "assay_type": "OrganismalFitness"
+    },
+    "SERC_HUMAN_Xie_2023": {
+      "spearman": 0.5728,
+      "n_mutations": 1914,
+      "msa_depth": 3700,
+      "assay_type": "OrganismalFitness"
+    },
+    "SOX30_HUMAN_Tsuboyama_2023_7JJK": {
+      "spearman": 0.3517,
+      "n_mutations": 1010,
+      "msa_depth": 570,
+      "assay_type": "Stability"
+    },
+    "SPA_STAAU_Tsuboyama_2023_1LP1": {
+      "spearman": 0.6476,
+      "n_mutations": 2105,
+      "msa_depth": 550,
+      "assay_type": "Stability"
+    },
+    "SPG1_STRSG_Wu_2016": {
+      "spearman": 0.2025,
+      "n_mutations": 149360,
+      "msa_depth": 3109,
+      "assay_type": "Binding"
+    },
+    "SPG2_STRSG_Tsuboyama_2023_5UBS": {
+      "spearman": 0.7035,
+      "n_mutations": 1451,
+      "msa_depth": 560,
+      "assay_type": "Stability"
+    },
+    "SPIKE_SARS2_Starr_2020_binding": {
+      "spearman": 0.4967,
+      "n_mutations": 3802,
+      "msa_depth": 12730,
+      "assay_type": "Binding"
+    },
+    "SPIKE_SARS2_Starr_2020_expression": {
+      "spearman": 0.6415,
+      "n_mutations": 3798,
+      "msa_depth": 12730,
+      "assay_type": "Expression"
+    },
+    "SPTN1_CHICK_Tsuboyama_2023_1TUD": {
+      "spearman": 0.7557,
+      "n_mutations": 3201,
+      "msa_depth": 600,
+      "assay_type": "Stability"
+    },
+    "SQSTM_MOUSE_Tsuboyama_2023_2RRU": {
+      "spearman": 0.7163,
+      "n_mutations": 707,
+      "msa_depth": 500,
+      "assay_type": "Stability"
+    },
+    "SR43C_ARATH_Tsuboyama_2023_2N88": {
+      "spearman": 0.7259,
+      "n_mutations": 1583,
+      "msa_depth": 500,
+      "assay_type": "Stability"
+    },
+    "SRBS1_HUMAN_Tsuboyama_2023_2O2W": {
+      "spearman": 0.7964,
+      "n_mutations": 1556,
+      "msa_depth": 670,
+      "assay_type": "Stability"
+    },
+    "SRC_HUMAN_Ahler_2019": {
+      "spearman": 0.6172,
+      "n_mutations": 3372,
+      "msa_depth": 5360,
+      "assay_type": "Activity"
+    },
+    "SRC_HUMAN_Chakraborty_2023_binding-DAS_25uM": {
+      "spearman": 0.531,
+      "n_mutations": 3637,
+      "msa_depth": 5360,
+      "assay_type": "Activity"
+    },
+    "SRC_HUMAN_Nguyen_2022": {
+      "spearman": 0.5252,
+      "n_mutations": 3366,
+      "msa_depth": 5360,
+      "assay_type": "OrganismalFitness"
+    },
+    "SUMO1_HUMAN_Weile_2017": {
+      "spearman": 0.5973,
+      "n_mutations": 1700,
+      "msa_depth": 1010,
+      "assay_type": "OrganismalFitness"
+    },
+    "SYUA_HUMAN_Newberry_2020": {
+      "spearman": 0.3721,
+      "n_mutations": 2497,
+      "msa_depth": 1400,
+      "assay_type": "OrganismalFitness"
+    },
+    "TADBP_HUMAN_Bolognesi_2019": {
+      "spearman": 0.3206,
+      "n_mutations": 1196,
+      "msa_depth": 1211,
+      "assay_type": "OrganismalFitness"
+    },
+    "TAT_HV1BR_Fernandes_2016": {
+      "spearman": 0.4747,
+      "n_mutations": 1577,
+      "msa_depth": 860,
+      "assay_type": "OrganismalFitness"
+    },
+    "TCRG1_MOUSE_Tsuboyama_2023_1E0L": {
+      "spearman": 0.7529,
+      "n_mutations": 1058,
+      "msa_depth": 500,
+      "assay_type": "Stability"
+    },
+    "THO1_YEAST_Tsuboyama_2023_2WQG": {
+      "spearman": 0.5665,
+      "n_mutations": 1279,
+      "msa_depth": 500,
+      "assay_type": "Stability"
+    },
+    "TNKS2_HUMAN_Tsuboyama_2023_5JRT": {
+      "spearman": 0.5949,
+      "n_mutations": 1479,
+      "msa_depth": 590,
+      "assay_type": "Stability"
+    },
+    "TPK1_HUMAN_Weile_2017": {
+      "spearman": 0.3032,
+      "n_mutations": 3181,
+      "msa_depth": 2430,
+      "assay_type": "OrganismalFitness"
+    },
+    "TPMT_HUMAN_Matreyek_2018": {
+      "spearman": 0.6177,
+      "n_mutations": 3648,
+      "msa_depth": 2450,
+      "assay_type": "Expression"
+    },
+    "TPOR_HUMAN_Bridgford_2020": {
+      "spearman": 0.5229,
+      "n_mutations": 562,
+      "msa_depth": 937,
+      "assay_type": "OrganismalFitness"
+    },
+    "TRPC_SACS2_Chan_2017": {
+      "spearman": 0.6594,
+      "n_mutations": 1519,
+      "msa_depth": 2480,
+      "assay_type": "OrganismalFitness"
+    },
+    "TRPC_THEMA_Chan_2017": {
+      "spearman": 0.4967,
+      "n_mutations": 1519,
+      "msa_depth": 2520,
+      "assay_type": "OrganismalFitness"
+    },
+    "UBC9_HUMAN_Weile_2017": {
+      "spearman": 0.5083,
+      "n_mutations": 2563,
+      "msa_depth": 1590,
+      "assay_type": "OrganismalFitness"
+    },
+    "UBE4B_HUMAN_Tsuboyama_2023_3L1X": {
+      "spearman": 0.5193,
+      "n_mutations": 3622,
+      "msa_depth": 690,
+      "assay_type": "Stability"
+    },
+    "UBE4B_MOUSE_Starita_2013": {
+      "spearman": 0.496,
+      "n_mutations": 899,
+      "msa_depth": 4743,
+      "assay_type": "Activity"
+    },
+    "UBR5_HUMAN_Tsuboyama_2023_1I2T": {
+      "spearman": 0.6924,
+      "n_mutations": 1453,
+      "msa_depth": 580,
+      "assay_type": "Stability"
+    },
+    "VG08_BPP22_Tsuboyama_2023_2GP8": {
+      "spearman": 0.6531,
+      "n_mutations": 723,
+      "msa_depth": 500,
+      "assay_type": "Stability"
+    },
+    "VILI_CHICK_Tsuboyama_2023_1YU5": {
+      "spearman": 0.7473,
+      "n_mutations": 2568,
+      "msa_depth": 650,
+      "assay_type": "Stability"
+    },
+    "VKOR1_HUMAN_Chiasson_2020_abundance": {
+      "spearman": 0.6135,
+      "n_mutations": 2695,
+      "msa_depth": 1630,
+      "assay_type": "Expression"
+    },
+    "VKOR1_HUMAN_Chiasson_2020_activity": {
+      "spearman": 0.4156,
+      "n_mutations": 697,
+      "msa_depth": 1630,
+      "assay_type": "Activity"
+    },
+    "VRPI_BPT7_Tsuboyama_2023_2WNM": {
+      "spearman": 0.5822,
+      "n_mutations": 1047,
+      "msa_depth": 560,
+      "assay_type": "Stability"
+    },
+    "YAIA_ECOLI_Tsuboyama_2023_2KVT": {
+      "spearman": 0.7458,
+      "n_mutations": 1890,
+      "msa_depth": 520,
+      "assay_type": "Stability"
+    },
+    "YAP1_HUMAN_Araya_2012": {
+      "spearman": 0.5207,
+      "n_mutations": 10075,
+      "msa_depth": 1604,
+      "assay_type": "Binding"
+    },
+    "YNZC_BACSU_Tsuboyama_2023_2JVD": {
+      "spearman": 0.688,
+      "n_mutations": 2300,
+      "msa_depth": 500,
+      "assay_type": "Stability"
+    },
+    "SPG1_STRSG_Olson_2014": {
+      "spearman": 0.6351,
+      "n_mutations": 536962,
+      "msa_depth": 44,
+      "assay_type": "Binding"
+    }
+  }
+}

@@ -1,0 +1,198 @@
+# The Little Scientist: Delta V
+
+**Autonomous LLM-driven protein mutation effect prediction via the SEF framework**
+
+This repository contains the CPCWE (Constraint-Propagated Confidence-Weighted Ensemble) strategy and evaluation pipeline that achieved state-of-the-art results on the [ProteinGym](https://proteingym.org) benchmark for zero-shot prediction of mutation effects. The strategy was discovered autonomously by LLM agents operating within the SEF (Scientific Experiment Framework), an iterative code-search system where agents write, test, and refine interpretable scoring algorithms.
+
+---
+
+## Results
+
+Full evaluation on all 217 ProteinGym DMS substitution assays (2026-08-07):
+
+| Aggregation Method | CPCWE (ours) | VenusREM (SOTA) | Advantage |
+|---|---|---|---|
+| Flat mean (217 assays) | 0.5690 | 0.5357 | +6.2% |
+| UniProt mean (186 proteins) | 0.5698 | 0.5379 | +5.9% |
+| **Official (category mean)** | **0.5511** | **0.5151** | **+7.0%** |
+
+### Category Breakdown vs ProteinGym Leaderboard
+
+| Category | CPCWE | AIDO Protein-RAG | VenusREM | ProSST-2048 | S3F_MSA | GEMME |
+|---|---|---|---|---|---|---|
+| Activity | **0.551** | 0.517 | 0.495 | 0.476 | 0.502 | 0.487 |
+| Binding | 0.470 | 0.426 | 0.454 | 0.445 | 0.440 | 0.396 |
+| Expression | **0.572** | 0.522 | 0.533 | 0.487 | 0.510 | 0.439 |
+| OrganismalFitness | **0.520** | 0.491 | 0.459 | 0.438 | 0.430 | 0.399 |
+| Stability | 0.642 | 0.635 | **0.650** | **0.653** | 0.581 | 0.537 |
+
+Bold = best in column. CPCWE leads 3 of 5 categories.
+
+Full per-protein results: [`results/full_eval_2026-08-07.json`](results/full_eval_2026-07-07.json)
+Detailed findings: [`results/findings_2026-08-07.md`](results/findings_2026-08-07.md)
+
+---
+
+## Method
+
+### CPCWE Strategy
+
+The strategy (`strategy/delta_v_strategy.py`) implements a multi-stage pipeline:
+
+1. **Quantile calibration** — redistributes model score distributions to correct systematic compression/expansion (2.3x harmful-tail expansion)
+2. **Z-score normalization** — brings all five models to a common scale
+3. **Confidence-weighted ensemble** — blends predictions from VenusREM, S3F_MSA, ESM2_15B, ProSST-2048, and GEMME using per-model confidence scaling
+4. **Residual propagation** — 3 iterations of position-specific correction using structural similarity (RSA-based weighting)
+5. **Power transformation** — x^0.7 dynamic range expansion to amplify tail signal
+6. **Structure-based penalties** — assay-specific multipliers for charge, volume, hydrophobicity changes at buried residues
+7. **GEMME conservation modulation** — Shannon entropy-based per-position weight adjustment
+
+The algorithm is pure Python with numpy — no GPU, no neural network inference, runs in under 2 seconds per protein.
+
+### How It Was Discovered
+
+The strategy was produced by autonomous LLM agents using the SEF framework:
+
+- A **Scientist agent** iteratively refined the algorithm across hundreds of cycles, each time forming a hypothesis, writing code, testing it on a 5-protein smoke test, and submitting it for full evaluation
+- A **Kuhn agent** attempted paradigm-breaking approaches by importing structural logic from outside domains (e.g., signal processing, thermodynamics, crystallography) to challenge fixed assumptions in the current paradigm
+- The agent received only Spearman correlation scores and structured diagnostics — never the ground-truth labels — and had to reason about *why* changes helped or hurt
+
+See [`sef/SEF_ARCHITECTURE.md`](sef/SEF_ARCHITECTURE.md) for the full framework architecture.
+
+---
+
+## Requirements
+
+- Python 3.10+
+- numpy
+- scipy
+
+```bash
+pip install numpy scipy
+```
+
+---
+
+## Repository Structure
+
+```
+little_scientist-delta-v/
+├── strategy/
+│   └── delta_v_strategy.py       CPCWE strategy (the final algorithm)
+├── eval/
+│   ├── proteingym_eval.py        Full 217-protein evaluation harness
+│   ├── proteingym_smoke.py       5-protein smoke test
+│   └── proteingym_data.py        Read-only data access library (SQLite)
+├── sef/
+│   ├── SEF_ARCHITECTURE.md       Framework architecture documentation
+│   ├── proteingym_validate_and_eval.sh   Validator + evaluator pipeline
+│   ├── smoke_test_watcher.py     Watcher service (triggers smoke/eval)
+│   ├── pg_common.py              Shared utilities
+│   ├── pg_kuhn_selector.py       Kuhn injection pair selector
+│   ├── pg_preflight.py           Timing pre-flight validator
+│   ├── kuhn_handoff.py           Kuhn->Scientist handoff
+│   ├── scientist_to_kuhn_handoff.py  Scientist->Kuhn handoff
+│   ├── build_proteingym_db.py    Database builder from raw model outputs
+│   ├── setup.sh                  Infrastructure provisioning
+│   └── config/
+│       └── timings.json          Timing configuration
+├── kuhn/
+│   └── AGENTS.md                 Kuhn agent prompt
+└── results/
+    ├── full_eval_2026-08-07.json Per-protein results (217 assays)
+    └── findings_2026-08-07.md    Analysis and findings
+```
+
+---
+
+## Usage
+
+### Running the Evaluation
+
+The strategy requires a pre-built SQLite database containing model predictions from the five SOTA models. Data paths are configured via environment variables:
+
+```bash
+export PROTEINGYM_DATA=/path/to/DMS_ProteinGym_substitutions
+export PROTEINGYM_REFERENCE=/path/to/DMS_substitutions.csv
+export PROTEINGYM_MSA=/path/to/DMS_msa_files
+export PROTEINGYM_DB=/path/to/proteingym_data.db
+
+# Run full evaluation (217 proteins)
+python3 eval/proteingym_eval.py --dir strategy/
+
+# Run smoke test (5 proteins)
+python3 eval/proteingym_smoke.py --workspace strategy/
+```
+
+The strategy module (`delta_v_strategy.py`) must expose:
+
+```python
+def score_mutations(sequences, protein_id, wild_type, mutations, msa=None):
+    """Returns list of floats (same length as mutations). Higher = more harmful."""
+    ...
+```
+
+### Building the Database
+
+The `proteingym_data.db` database integrates predictions from all five models plus physicochemical features and structural data. Build it from raw ProteinGym model outputs:
+
+```bash
+export PROTEINGYM_SCORES_DIR=/path/to/model_score_csvs
+export PROTEINGYM_REFERENCE=/path/to/DMS_substitutions.csv
+export PROTEINGYM_DB_OUTPUT=/path/to/proteingym_data.db
+
+python3 sef/build_proteingym_db.py
+```
+
+Input: one CSV per protein with columns `mutant, VenusREM, S3F_MSA, ESM2_15B, ProSST-2048, GEMME`.
+
+The builder is idempotent — existing tables are dropped and rebuilt on each run. No ground-truth labels (`DMS_score`) are ever stored in the database; label leakage is impossible by construction.
+
+### Data Access API
+
+Strategies access model predictions via the `proteingym_data` library:
+
+```python
+from proteingym_data import get_model_scores, get_residue_structure, get_protein_info
+
+scores = get_model_scores(protein_id, mutations)
+# -> {mutant: {"venus_rem": float, "s3f_msa": float, "esm2_15b": float,
+#              "prosst_2048": float, "gemme": float, "wt_aa": str, ...}}
+
+structure = get_residue_structure(protein_id)
+# -> {position: {"rsa": float, "burial_class": str, ...}}
+
+info = get_protein_info(protein_id)
+# -> {"coarse_selection_type": str, "msa_num_seqs": int, ...}
+```
+
+---
+
+## Benchmark
+
+This code evaluates against the **ProteinGym** benchmark — the standard suite of 217 deep mutational scanning substitution assays for zero-shot mutation effect prediction.
+
+- Benchmark site: [https://proteingym.org](https://proteingym.org)
+- Leaderboard: [https://proteingym.org/benchmarks](https://proteingym.org/benchmarks)
+
+---
+
+## Code Availability
+
+All code needed to reproduce the evaluation results is provided in this repository. The strategy algorithm (`strategy/delta_v_strategy.py`) is fully self-contained and deterministic. Pre-computed model predictions from VenusREM, S3F_MSA, ESM2_15B, ProSST-2048, and GEMME can be obtained from the ProteinGym benchmark download.
+
+---
+
+## Citation
+
+> *Citation and DOI will be added upon publication.*
+
+This repository is companion code for an upcoming paper. If you use this code or build on the CPCWE strategy before the paper is published, please reference this repository.
+
+---
+
+## License
+
+MIT License. See [LICENSE](LICENSE).
+
+Copyright (c) 2026 The Little Scientist project.

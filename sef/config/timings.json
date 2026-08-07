@@ -1,0 +1,20 @@
+{
+  "_comment": "Single source of truth for ProteinGym SEF timing. All scripts read from this file.",
+  "_comment2": "Edit values here, then restart watcher services. Cron interval is set via your scheduler.",
+  "cron_interval_seconds": 1800,
+  "agent_timeout_seconds": 1200,
+  "smoke_timeout_seconds": 600,
+  "validator_timeout_seconds": 1800,
+  "eval_per_protein_timeout_seconds": 300,
+  "code_review_grace_seconds": 600,
+  "debounce_seconds": 60,
+  "poll_interval_seconds": 1.0,
+  "validator_stale_lock_seconds": 600,
+  "smoke_pass_max_age_minutes": 90,
+  "_derived": {
+    "smoke_eval_total_seconds": "smoke_timeout_seconds + validator_timeout_seconds",
+    "min_cycle_seconds": "smoke_timeout_seconds + validator_timeout_seconds + 60",
+    "timing_check": "cron_interval_seconds must be > agent_timeout_seconds + smoke_timeout_seconds + 120"
+  },
+  "min_progress_delta": 0.0005
+}
