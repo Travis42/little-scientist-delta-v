@@ -193,6 +193,8 @@ This repository is companion code for an upcoming paper. If you use this code or
 
 ## License
 
-MIT License. See [LICENSE](LICENSE).
+Apache License 2.0. See [LICENSE](LICENSE).
+
+Includes an explicit patent grant and patent retaliation clause — anyone who contributes grants patent rights to all users, and loses their license if they initiate patent litigation against the project.
 
 Copyright (c) 2026 The Little Scientist project.
