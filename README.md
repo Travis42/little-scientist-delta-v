@@ -193,7 +193,7 @@ python3 sef/build_proteingym_db.py
 - **protein_info table** — metadata (MSA depth, taxon, selection type, mutation counts)
 
 **What the strategy ALSO needs (not in the DB):**
-- **MSA files** (`.a2m`) — the strategy reads these at runtime via the eval harness for Shannon entropy conservation features. These are loaded from `data/DMS_msa_files/` during evaluation, not from the database.
+- **MSA files** (`.a2m`, 4.9 GB) — loaded at runtime by the eval harness and passed to the strategy as the `msa` parameter. The strategy uses them for Shannon entropy position-conservation features. **These are required to reproduce the reported Spearman scores.** Without them, the strategy degrades gracefully (conservation features zero out) but scores will be lower. Both our eval harness (`proteingym_eval.py`) and the smoke test load these files — it's not the official ProteinGym script that needs them, it's ours.
 - **DMS assay CSVs** — ground-truth experimental data. Only used by the eval harness to compute Spearman correlation. The strategy never sees these values.
 
 No ground-truth labels (`DMS_score`) are ever stored in the database; label leakage is impossible by construction.
