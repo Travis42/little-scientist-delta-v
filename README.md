@@ -129,6 +129,27 @@ little_scientist-delta-v/
 
 ## Usage
 
+### Quick Start
+
+```bash
+git clone https://github.com/Travis42/little-scientist-delta-v.git
+cd little-scientist-delta-v
+pip install -r requirements.txt
+
+# Option A: Download all data from ProteinGym (~36 GB)
+python3 sef/setup_data.py --download
+
+# Option B: Use existing ProteinGym data you already have
+python3 sef/setup_data.py --local /path/to/your/proteingym_data
+
+# Verify: run the final strategy on all 217 proteins
+python3 eval/proteingym_eval.py --dir strategy/
+```
+
+The `setup_data.py` script handles everything: downloading DMS assays, model scores, MSA files, building the SQLite database, and optionally downloading AlphaFold structures for RSA features. Use `--local` if you already have the ProteinGym data package — it'll skip re-downloading 36 GB and go straight to building the database.
+
+For full data setup details, see [`data/README.md`](data/README.md).
+
 ### Running the Evaluation
 
 The strategy requires a pre-built SQLite database containing model predictions from the five SOTA models. Data paths are configured via environment variables:
@@ -156,7 +177,7 @@ def score_mutations(sequences, protein_id, wild_type, mutations, msa=None):
 
 ### Building the Database
 
-The `proteingym_data.db` database integrates predictions from all five models plus physicochemical features and structural data. Build it from raw ProteinGym model outputs:
+The database is built automatically by `setup_data.py`. To build manually:
 
 ```bash
 export PROTEINGYM_SCORES_DIR=/path/to/model_score_csvs
@@ -166,9 +187,28 @@ export PROTEINGYM_DB_OUTPUT=/path/to/proteingym_data.db
 python3 sef/build_proteingym_db.py
 ```
 
-Input: one CSV per protein with columns `mutant, VenusREM, S3F_MSA, ESM2_15B, ProSST-2048, GEMME`.
+**What goes into the DB:**
+- **model_scores table** — predictions from VenusREM, S3F_MSA, ESM2_15B, ProSST-2048, GEMME (the 5 ensemble inputs), plus computed physicochemical features (delta_charge, delta_volume, delta_hydrophobicity, BLOSUM62)
+- **residue_structure table** — per-position relative solvent accessibility (RSA) and burial class from AlphaFold structures
+- **protein_info table** — metadata (MSA depth, taxon, selection type, mutation counts)
 
-The builder is idempotent — existing tables are dropped and rebuilt on each run. No ground-truth labels (`DMS_score`) are ever stored in the database; label leakage is impossible by construction.
+**What the strategy ALSO needs (not in the DB):**
+- **MSA files** (`.a2m`) — the strategy reads these at runtime via the eval harness for Shannon entropy conservation features. These are loaded from `data/DMS_msa_files/` during evaluation, not from the database.
+- **DMS assay CSVs** — ground-truth experimental data. Only used by the eval harness to compute Spearman correlation. The strategy never sees these values.
+
+No ground-truth labels (`DMS_score`) are ever stored in the database; label leakage is impossible by construction.
+
+### Setting Up the SEF Framework (Autonomous Evolution)
+
+To run the full SEF framework with autonomous LLM agents iterating on the strategy:
+
+1. Read [`docs/OPENCLAW_SETUP.md`](docs/OPENCLAW_SETUP.md) for OpenClaw agent and cron job configuration
+2. Copy workspace templates: `cp -r workspace/ /path/to/your/workspace/`
+3. Copy Kuhn templates: `cp -r kuhn/ /path/to/your/kuhn-workspace/`
+4. Install the smoke test watcher service
+5. Configure the Scientist and Kuhn agent cron jobs
+
+The framework runs two agents: a **Scientist** that iteratively refines the algorithm, and a **Kuhn** agent that attempts paradigm-breaking approaches when the Scientist plateaus.
 
 ### Data Access API
 
