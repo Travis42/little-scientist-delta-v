@@ -1,11 +1,15 @@
-# Generated artifacts — don't commit these
-staging_*
+# Generated at runtime — don't commit
 history.jsonl
 all_time_best.txt
 best_so_far_strategy.py
 last_attempt_strategy.py
 staging_strategy.py
-scratch.md
 openclaw-workspace-state.json
 __pycache__/
 *.pyc
+
+# Note: staging_*.md, staging_*.txt, staging_*.json templates ARE committed
+# These are templates the agent fills in each iteration.
+# The runtime-generated versions are staging_strategy.py (ignored above)
+# and staging_smoke_result.json (ignored below)
+staging_smoke_result.json

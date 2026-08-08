@@ -109,7 +109,7 @@ little_scientist-delta-v/
 │   ├── worksheet_template.md         Agent iteration worksheet
 │   └── ... (SOUL.md, IDENTITY.md, etc.)
 ├── kuhn/                             Kuhn agent workspace templates
-│   ├── AGENTS.md                     Kuhn agent prompt
+│   ├── AGENT_PROMPT.md               Kuhn agent prompt
 │   ├── program.md                    Problem description
 │   └── ... (DATA_REFERENCE.md, TECHNIQUES.md, etc.)
 ├── tests/
