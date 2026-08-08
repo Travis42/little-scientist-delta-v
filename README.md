@@ -1,16 +1,15 @@
 # The Little Scientist: Delta V
 
-**Autonomous LLM-driven protein mutation effect prediction via the SEF framework**
+**Autonomous LLM-driven protein mutation effect prediction via the Little Scientist framework**
 
-This repository contains the CPCWE (Constraint-Propagated Confidence-Weighted Ensemble) strategy and evaluation pipeline that achieved state-of-the-art results on the [ProteinGym](https://proteingym.org) benchmark for zero-shot prediction of mutation effects. The strategy was discovered autonomously by LLM agents operating within the SEF (Scientific Experiment Framework), an iterative code-search system where agents write, test, and refine interpretable scoring algorithms.
+This repository contains the Delta V strategy and evaluation pipeline that achieved state-of-the-art results on the [ProteinGym](https://proteingym.org) benchmark for zero-shot prediction of mutation effects. The strategy was discovered autonomously by LLM agents operating within the SEF (Scientific Experiment Framework), an iterative code-search system where agents write, test, and refine interpretable scoring algorithms.
 
 ---
-
 ## Results
 
 Full evaluation on all 217 ProteinGym DMS substitution assays (2026-08-07):
 
-| Aggregation Method | CPCWE (ours) | VenusREM (SOTA) | Advantage |
+| Aggregation Method | Delta V (ours) | VenusREM (SOTA) | Advantage |
 |---|---|---|---|
 | Flat mean (217 assays) | 0.5690 | 0.5357 | +6.2% |
 | UniProt mean (186 proteins) | 0.5698 | 0.5379 | +5.9% |
@@ -18,7 +17,7 @@ Full evaluation on all 217 ProteinGym DMS substitution assays (2026-08-07):
 
 ### Category Breakdown vs ProteinGym Leaderboard
 
-| Category | CPCWE | AIDO Protein-RAG | VenusREM | ProSST-2048 | S3F_MSA | GEMME |
+| Category | Delta V | AIDO Protein-RAG | VenusREM | ProSST-2048 | S3F_MSA | GEMME |
 |---|---|---|---|---|---|---|
 | Activity | **0.551** | 0.517 | 0.495 | 0.476 | 0.502 | 0.487 |
 | Binding | 0.470 | 0.426 | 0.454 | 0.445 | 0.440 | 0.396 |
@@ -26,7 +25,7 @@ Full evaluation on all 217 ProteinGym DMS substitution assays (2026-08-07):
 | OrganismalFitness | **0.520** | 0.491 | 0.459 | 0.438 | 0.430 | 0.399 |
 | Stability | 0.642 | 0.635 | **0.650** | **0.653** | 0.581 | 0.537 |
 
-Bold = best in column. CPCWE leads 3 of 5 categories.
+Bold = best in column. Delta V leads 3 of 5 categories.
 
 Full per-protein results: [`results/full_eval_2026-08-07.json`](results/full_eval_2026-07-07.json)
 Detailed findings: [`results/findings_2026-08-07.md`](results/findings_2026-08-07.md)
@@ -35,7 +34,7 @@ Detailed findings: [`results/findings_2026-08-07.md`](results/findings_2026-08-0
 
 ## Method
 
-### CPCWE Strategy
+### Delta V Strategy
 
 The strategy (`strategy/delta_v_strategy.py`) implements a multi-stage pipeline:
 
@@ -78,7 +77,7 @@ pip install numpy scipy
 ```
 little_scientist-delta-v/
 ├── strategy/
-│   └── delta_v_strategy.py       CPCWE strategy (the final algorithm)
+│   └── delta_v_strategy.py       Delta V strategy (the final algorithm)
 ├── eval/
 │   ├── proteingym_eval.py        Full 217-protein evaluation harness
 │   ├── proteingym_smoke.py       5-protein smoke test
@@ -187,7 +186,7 @@ All code needed to reproduce the evaluation results is provided in this reposito
 
 > *Citation and DOI will be added upon publication.*
 
-This repository is companion code for an upcoming paper. If you use this code or build on the CPCWE strategy before the paper is published, please reference this repository.
+This repository is companion code for an upcoming paper. If you use this code or build on the Delta V strategy before the paper is published, please reference this repository.
 
 ---
 
@@ -197,4 +196,4 @@ Apache License 2.0. See [LICENSE](LICENSE).
 
 Includes an explicit patent grant and patent retaliation clause — anyone who contributes grants patent rights to all users, and loses their license if they initiate patent litigation against the project.
 
-Copyright (c) 2026 The Little Scientist project.
+Copyright (c) 2026 Travis Smith.
