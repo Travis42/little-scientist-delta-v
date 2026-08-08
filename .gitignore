@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+data/*.db
+data/DMS_ProteinGym_substitutions/
+data/DMS_msa_files/

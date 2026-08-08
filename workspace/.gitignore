@@ -1,0 +1,11 @@
+# Generated artifacts — don't commit these
+staging_*
+history.jsonl
+all_time_best.txt
+best_so_far_strategy.py
+last_attempt_strategy.py
+staging_strategy.py
+scratch.md
+openclaw-workspace-state.json
+__pycache__/
+*.pyc

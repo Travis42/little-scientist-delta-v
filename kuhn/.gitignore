@@ -1,0 +1,12 @@
+# Generated artifacts
+staging_*
+history.jsonl
+all_time_best.txt
+best_so_far_strategy.py
+last_attempt_strategy.py
+staging_strategy.py
+KUHN_INJECTION.json
+KUHN_STATE.json
+openclaw-workspace-state.json
+__pycache__/
+*.pyc

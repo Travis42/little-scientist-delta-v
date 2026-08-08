@@ -77,29 +77,52 @@ pip install numpy scipy
 ```
 little_scientist-delta-v/
 ├── strategy/
-│   └── delta_v_strategy.py       Delta V strategy (the final algorithm)
+│   └── delta_v_strategy.py           Delta V strategy (the final algorithm)
 ├── eval/
-│   ├── proteingym_eval.py        Full 217-protein evaluation harness
-│   ├── proteingym_smoke.py       5-protein smoke test
-│   └── proteingym_data.py        Read-only data access library (SQLite)
+│   ├── proteingym_eval.py            Full 217-protein evaluation harness
+│   ├── proteingym_smoke.py           5-protein smoke test
+│   ├── proteingym_data.py            Read-only data access library (SQLite)
+│   └── run_official_performance.py   Official ProteinGym 5-metric scorer
 ├── sef/
-│   ├── SEF_ARCHITECTURE.md       Framework architecture documentation
+│   ├── SEF_ARCHITECTURE.md           Framework architecture documentation
 │   ├── proteingym_validate_and_eval.sh   Validator + evaluator pipeline
-│   ├── smoke_test_watcher.py     Watcher service (triggers smoke/eval)
-│   ├── pg_common.py              Shared utilities
-│   ├── pg_kuhn_selector.py       Kuhn injection pair selector
-│   ├── pg_preflight.py           Timing pre-flight validator
-│   ├── kuhn_handoff.py           Kuhn->Scientist handoff
+│   ├── smoke_test_watcher.py         Watcher service (triggers smoke/eval)
+│   ├── pg_common.py                  Shared utilities
+│   ├── pg_kuhn_selector.py           Kuhn injection pair selector
+│   ├── pg_preflight.py              Timing pre-flight validator
+│   ├── kuhn_handoff.py               Kuhn->Scientist handoff
 │   ├── scientist_to_kuhn_handoff.py  Scientist->Kuhn handoff
-│   ├── build_proteingym_db.py    Database builder from raw model outputs
-│   ├── setup.sh                  Infrastructure provisioning
+│   ├── build_proteingym_db.py        Database builder from raw model outputs
+│   ├── compute_asa.py                Solvent accessibility from structures
+│   ├── download_structures.py        AlphaFold structure downloader
+│   ├── setup.sh                      Infrastructure provisioning
 │   └── config/
-│       └── timings.json          Timing configuration
-├── kuhn/
-│   └── AGENTS.md                 Kuhn agent prompt
+│       └── timings.json              Timing configuration
+├── workspace/                        Agent workspace templates
+│   ├── program.md                    Problem description and function signature
+│   ├── AGENT_PROMPT.md               Full scientist agent prompt
+│   ├── DATA_REFERENCE.md             Data API docs (single source of truth)
+│   ├── DATA_PRIMER.md                Model descriptions and properties
+│   ├── TECHNIQUES.md                 Advanced MSA feature code
+│   ├── causal_model.md               Paradigm documentation
+│   ├── paradigm_context.md           Kuhn handoff context format
+│   ├── worksheet_template.md         Agent iteration worksheet
+│   └── ... (SOUL.md, IDENTITY.md, etc.)
+├── kuhn/                             Kuhn agent workspace templates
+│   ├── AGENTS.md                     Kuhn agent prompt
+│   ├── program.md                    Problem description
+│   └── ... (DATA_REFERENCE.md, TECHNIQUES.md, etc.)
+├── tests/
+│   ├── test_proteingym_data.py       Data library tests
+│   └── test_validator.py             Validator tests
+├── data/
+│   └── README.md                     Data download instructions
 └── results/
-    ├── full_eval_2026-08-07.json Per-protein results (217 assays)
-    └── findings_2026-08-07.md    Analysis and findings
+    ├── official_performance/         Official ProteinGym results (5 metrics)
+    ├── official_benchmark_summary.md Full benchmark writeup
+    ├── official_benchmark_log.txt    Complete run log
+    ├── full_eval_2026-08-07.json     Per-protein results (217 assays)
+    └── findings_2026-08-07.md        Analysis and findings
 ```
 
 ---
