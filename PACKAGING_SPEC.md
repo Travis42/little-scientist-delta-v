@@ -216,3 +216,27 @@ Copy test files, verify they pass against the public structure.
 Total estimated effort: **~6 hours of focused work**, most of which is file copying, path sanitizing, and writing clear documentation. The only non-trivial coding task is fixing the DB builder to handle the real merged score format.
 
 The hint that I'll be using this soon suggests we're about to start a new SEF domain (likely supervised substitutions). The packaging work IS the prep — making the framework reusable so a new domain can be spun up by copying the structure and swapping the data layer.
+
+---
+
+## Post-Mortem: Lessons from Supervised Substitutions Setup (2026-08-09)
+
+When we adapted the Delta V framework for supervised substitutions, we hit several infrastructure issues that only surfaced during actual runs:
+
+### Issues Found and Fixed
+
+1. **Eval script path mismatch.** The validator referenced `scripts/proteingym_eval.py` but the file lives in `eval/`. Same for the smoke test. Fix: update `EVAL_SCRIPT` in validator and `SMOKE_SCRIPT` in watcher.
+
+2. **PYTHONPATH missing eval/.** The strategy code imports `proteingym_data` from `eval/`, but the validator only added `scripts/` to PYTHONPATH. Fix: add `${PROJECT_ROOT}/eval` to PYTHONPATH in validator.
+
+3. **Kuhn workspace path bug.** `pg_common.py` and `smoke_test_watcher.py` computed KUHN_WS as `dirname(REPO_ROOT)/kuhn-workspace`, which resolves to the parent directory — wrong when the repo and workspace are siblings. Fix: use `REPO_ROOT/kuhn-workspace` instead.
+
+4. **last_attempt_strategy.py not saved on accept.** The validator only saved last_attempt on the reject path. On accept, best_so_far was overwritten without preserving the previous version. Fix: copy old best → last_attempt before overwriting.
+
+5. **Diagnostics referenced old model names.** The diagnostic output hardcoded "VenusREM, S3F_MSA, ESM2_15B" and "VenusREM floor 0.50". Fix: parameterize model names and SOTA references.
+
+6. **Transient staging files deleted by sanitizer.** `staging_code_reviewed`, `staging_smoke_trigger.json`, etc. were not in the sanitizer's whitelist and got cleaned up mid-flow. Fix: add to allowed set.
+
+### Takeaway
+
+When adapting the framework to a new domain, do a dry-run of the validator before starting the agent. The path and naming assumptions are baked into shell scripts and Python files that aren't obvious from the templates.

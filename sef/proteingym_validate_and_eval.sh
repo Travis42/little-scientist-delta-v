@@ -30,7 +30,7 @@ STRATEGY="${EVAL_ACTIVE_DIR}/strategy.py"
 BEST_SO_FAR="${TRACK_DIR}/best_so_far_strategy.py"
 LAST_ATTEMPT="${TRACK_DIR}/last_attempt_strategy.py"
 HISTORY="${TRACK_DIR}/history.jsonl"
-EVAL_SCRIPT="${PROJECT_ROOT}/scripts/proteingym_eval.py"
+EVAL_SCRIPT="${PROJECT_ROOT}/eval/proteingym_eval.py"
 REPO_ROOT="${PROJECT_ROOT}"
 # Integrated data DB (model predictions + structure).
 PROTEINGYM_DB_PATH="${PROTEINGYM_DB:-${PROJECT_ROOT}/data/proteingym_data.db}"
@@ -404,7 +404,7 @@ fi
 log "3.5 OK: DB healthy (${DB_ROW_COUNT} model_scores rows)"
 
 export PROTEINGYM_DB="$PROTEINGYM_DB_PATH"
-export PYTHONPATH="${SCRIPTS_DIR}${PYTHONPATH:+:${PYTHONPATH}}"
+export PYTHONPATH="${SCRIPTS_DIR}:${PROJECT_ROOT}/eval${PYTHONPATH:+:${PYTHONPATH}}"
 log "3.5 OK: PROTEINGYM_DB=${PROTEINGYM_DB}, PYTHONPATH includes scripts/"
 
 # ── Phase 4: Promote & Evaluate ────────────────────────────────────────────

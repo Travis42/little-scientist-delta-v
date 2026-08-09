@@ -19,7 +19,7 @@ REPO_ROOT = os.environ.get(
 SCIENTIST_WS = os.path.join(REPO_ROOT, "workspace")
 KUHN_WS = os.environ.get(
     "KUHN_WORKSPACE",
-    os.path.join(os.path.dirname(REPO_ROOT), "kuhn-workspace"),
+    os.path.join(REPO_ROOT, "kuhn-workspace"),
 )
 SCRIPTS_DIR = os.path.join(REPO_ROOT, "scripts")
 DATA_DIR = os.path.join(REPO_ROOT, "data", "DMS_ProteinGym_substitutions")

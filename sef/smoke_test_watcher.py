@@ -21,7 +21,7 @@ PROJECT_ROOT = os.environ.get(
     "PROTEINGYM_ROOT",
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
 )
-SMOKE_SCRIPT = os.path.join(PROJECT_ROOT, "scripts", "proteingym_smoke.py")
+SMOKE_SCRIPT = os.path.join(PROJECT_ROOT, "eval", "proteingym_smoke.py")
 VALIDATOR_SCRIPT = os.path.join(PROJECT_ROOT, "scripts", "proteingym_validate_and_eval.sh")
 VALIDATOR_LOG = os.path.join(PROJECT_ROOT, "logs", "validator_triggered.log")
 
@@ -29,7 +29,7 @@ VALIDATOR_LOG = os.path.join(PROJECT_ROOT, "logs", "validator_triggered.log")
 WORKSPACES = [
     os.path.join(PROJECT_ROOT, "workspace"),                          # scientist
     os.environ.get("KUHN_WORKSPACE",
-        os.path.join(os.path.dirname(PROJECT_ROOT), "kuhn-workspace")),  # kuhn
+        os.path.join(PROJECT_ROOT, "kuhn-workspace")),  # kuhn
 ]
 
 TIMINGS_PATH = os.path.join(PROJECT_ROOT, "config", "timings.json")

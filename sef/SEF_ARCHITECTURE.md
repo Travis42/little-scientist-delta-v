@@ -161,16 +161,16 @@ The full ProteinGym substitution benchmark — 217 deep mutational scanning data
 
 | Script | Purpose |
 |--------|---------|
-| `scripts/proteingym_validate_and_eval.sh` | The validator. Validates code security, runs eval, records result, archives strategy, runs sanitizer. |
-| `scripts/proteingym_eval.py` | Tier 2 eval: 217 DMS proteins, Spearman + speed bonus. |
-| `scripts/proteingym_smoke.py` | Tier 1 smoke test: 5 DMS proteins, 300s timeout each. |
-| `scripts/smoke_test_watcher.py` | systemd service. Watches both workspaces for triggers, runs smoke test, triggers validator on pass. Also handles code review injection (diff computation). |
-| `scripts/pg_kuhn_selector.py` | Selects next untried (assumption, domain) pair for Kuhn injection. 384 total pairs. |
-| `scripts/kuhn_handoff.py` | Copies Kuhn strategy to Scientist workspace on successful handoff. |
-| `scripts/pg_common.py` | Shared utilities: paths, history parsing, notification stubs, workspace operations. |
-| `scripts/proteingym_data.py` | Data library exposing model predictions, structure data, and protein metadata via SQLite. |
-| `scripts/build_proteingym_db.py` | Builds the SQLite database from raw model outputs and structure files. |
-| `scripts/setup.sh` | Provisioning script: validates deps, installs watcher service, configures logrotate, runs sanity checks. |
+| `sef/proteingym_validate_and_eval.sh` | The validator. Validates code security, runs eval, records result, archives strategy, runs sanitizer. |
+| `eval/proteingym_eval.py` | Tier 2 eval: 217 DMS proteins, Spearman + speed bonus. |
+| `eval/proteingym_smoke.py` | Tier 1 smoke test: 5 DMS proteins, 300s timeout each. |
+| `sef/smoke_test_watcher.py` | systemd service. Watches both workspaces for triggers, runs smoke test, triggers validator on pass. Also handles code review injection (diff computation). |
+| `sef/pg_kuhn_selector.py` | Selects next untried (assumption, domain) pair for Kuhn injection. 384 total pairs. |
+| `sef/kuhn_handoff.py` | Copies Kuhn strategy to Scientist workspace on successful handoff. |
+| `sef/pg_common.py` | Shared utilities: paths, history parsing, notification stubs, workspace operations. |
+| `eval/proteingym_data.py` | Data library exposing model predictions, structure data, and protein metadata via SQLite. |
+| `sef/build_proteingym_db.py` | Builds the SQLite database from raw model outputs and structure files. |
+| `sef/setup.sh` | Provisioning script: validates deps, installs watcher service, configures logrotate, runs sanity checks. |
 
 ### Data
 
@@ -227,6 +227,7 @@ Each cycle:
 2. **Check staging** — `staging_strategy.py` exists, passes security scan
 3. **Smoke gate** — verify `staging_smoke_passed.json` exists and is fresh (<90 min)
 4. **Promote** — copy staging -> `eval/<workspace_name>/strategy.py`
+   *(Note: the eval script lives in `eval/` not `scripts/`)*
 5. **Run eval** — `proteingym_eval.py` on 217 proteins (~8 min)
 6. **Parse score** — average Spearman + average speed bonus
 7. **Compare to best** — strictly greater to accept

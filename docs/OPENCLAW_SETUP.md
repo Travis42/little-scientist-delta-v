@@ -124,11 +124,13 @@ sudo systemctl enable smoke_test_watcher
 sudo systemctl start smoke_test_watcher
 ```
 
-The watcher monitors `workspace/staging_strategy.py`. When it changes:
-1. Runs `proteingym_smoke.py` (5-protein test, ~60 seconds)
-2. If smoke passes: runs full `proteingym_eval.py` (217 proteins, ~10 minutes)
+The watcher monitors `workspace/staging_smoke_trigger.json`. When an agent writes a trigger:
+1. Checks for `staging_code_reviewed` marker (agent verified code matches hypothesis)
+2. Runs `eval/proteingym_smoke.py` (5-protein test, ~60 seconds)
+3. If smoke passes: triggers `sef/proteingym_validate_and_eval.sh` (217 proteins, ~10 minutes)
+4. Validator writes diagnostics, history, archives strategy, commits to git
 3. Writes results to `workspace/staging_smoke_result.json`
-4. If the new strategy beats the current best: promotes it to `best_so_far_strategy.py`
+4. If the new strategy beats the current best: promotes it to `best_so_far_strategy.py`, saves old best as `last_attempt_strategy.py`, git commits
 
 ## Orchestrator (Main Agent)
 
@@ -141,18 +143,32 @@ The main OpenClaw agent (your primary assistant) manages the meta-loop:
 
 This orchestration is done manually or via the main agent's heartbeat — not a fixed cron schedule.
 
+## Directory Structure
+
+The repo uses a specific layout that the scripts depend on:
+
+```
+sef/    ← SEF orchestration scripts (validator, watcher, handoff, db builder)
+eval/   ← Evaluation scripts (eval, smoke test, data library)
+workspace/  ← Scientist agent workspace templates
+kuhn/       ← Kuhn agent workspace templates
+data/       ← Data directory (DMS CSVs, MSA files, DB — not committed)
+```
+
+**Critical:** The eval scripts (`proteingym_eval.py`, `proteingym_smoke.py`, `proteingym_data.py`) live in `eval/`, not `scripts/`. The validator and watcher reference `eval/` paths. If you reorganize, update `EVAL_SCRIPT` in `proteingym_validate_and_eval.sh` and `SMOKE_SCRIPT` in `smoke_test_watcher.py`.
+
 ## Environment Variables
 
 The eval scripts read these variables (with defaults):
 
-```
+``````
 PROTEINGYM_DATA=data/DMS_ProteinGym_substitutions
 PROTEINGYM_REFERENCE=data/DMS_substitutions.csv
 PROTEINGYM_MSA=data/DMS_msa_files
 PROTEINGYM_DB=data/proteingym_data.db
 ```
 
-For the systemd watcher, set these in the service file's `Environment=` lines.
+For the systemd watcher, set these in the service file's `Environment=` lines. Also set `PYTHONPATH` to include both `sef/` and `eval/` so the strategy can import `proteingym_data`.
 
 ## Full Configuration Sequence
 
@@ -185,3 +201,23 @@ cp -r kuhn/ /path/to/pg-kuhn-workspace/
 # Send it its first message to bootstrap:
 # "Read AGENT_PROMPT.md and program.md, then write your first strategy."
 ```
+
+## Troubleshooting
+
+**Eval crashes with "can't open file ... No such file or directory":**
+The validator looks for eval scripts in `eval/`. If you moved them, update `EVAL_SCRIPT` in `sef/proteingym_validate_and_eval.sh` and `SMOKE_SCRIPT` in `sef/smoke_test_watcher.py`.
+
+**Smoke test passes but eval crashes:**
+Check that `PYTHONPATH` includes `eval/` so `proteingym_data` is importable. The systemd service should have `Environment=PYTHONPATH=/path/to/repo/eval:/path/to/repo/sef`.
+
+**Agent can't import `proteingym_data`:**
+The data library lives in `eval/proteingym_data.py`. The eval scripts add `eval/` to `sys.path` automatically, but if you run scripts from a different directory, set `PYTHONPATH` manually.
+
+**Watcher finds wrong Kuhn workspace:**
+`pg_common.py` and `smoke_test_watcher.py` compute `KUHN_WS` as `REPO_ROOT/../kuhn-workspace` by default. If your Kuhn workspace is inside the repo, set the `KUHN_WORKSPACE` environment variable.
+
+**`last_attempt_strategy.py` not created:**
+The validator saves the previous best as `last_attempt_strategy.py` before overwriting `best_so_far_strategy.py` on accept. It's also saved on reject (the rejected strategy becomes `last_attempt`).
+
+**Git commits not happening:**
+The validator auto-commits on accept. Ensure the repo has git configured (`git config user.name` and `user.email`) and the workspace is inside the git repo.
