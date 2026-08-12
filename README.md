@@ -247,9 +247,9 @@ All code needed to reproduce the evaluation results is provided in this reposito
 
 ## Citation
 
-> *Citation and DOI will be added upon publication.*
+Smith, Travis. (2026). The Little Scientist: Hypothesis-Driven Iterative Algorithm Discovery by LLM Agents. Zenodo. https://doi.org/10.5281/zenodo.21907349
 
-This repository is companion code for an upcoming paper. If you use this code or build on the Delta V strategy before the paper is published, please reference this repository.
+If you use this code or build on the Delta V strategy before the paper is published, please reference this repository and the Zenodo deposit.
 
 ---
 
